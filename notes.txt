@@ -3,3 +3,21 @@ Email verify api --  https://www.npmjs.com/package/email-verifier
     would be better to make my own
 
 dns module for node seems to be able to handle dns and mx lookup I just need to learn to import the functions properly testing to come...
+dns module seems to work for our purposes
+
+
+Estimated time to get to MVP
+
+Develop 5 basic pages front end 20 hours
+Set up DB 5 hours
+Perfect email verification including research 8 hours ~
+Write routes 5 hours (12 routes rougly)
+Authentication setup 4 hours?
+Deployment 3 hours
+
+
+Auth link for firebase
+https://github.com/firebase/firebaseui-web-react
+
+Link for mx/dns lookup
+https://github.com/nmanousos/email-existence/blob/master/index.js

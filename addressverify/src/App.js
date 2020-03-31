@@ -7,6 +7,7 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
+      //user data will be imported here upon login
       email:'milessobhani@gmail.com'
     }
   }

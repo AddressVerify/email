@@ -3,16 +3,16 @@ const options = {
     all:true,
 }
 
-dns.lookup('aol.com', options)
+dns.lookup('gmail.com', options)
 .then((result) => {
-    console.log(result);
+    console.log('dns results', result);
   }).catch((err) => {
-      console.log(err);
+      console.log('error', err);
   });
 
 dns.resolveMx('aol.com', options)
 .then((result) => {
-    console.log(result);
+    console.log('mx results', result);
 }).catch((err) => {
-    console.log(err);
+    console.log('error', err);
 });
