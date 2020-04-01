@@ -26,7 +26,7 @@ class Submit extends React.Component {
 		let testStr = this.state.submission;
 		// let trimStr = testStr.replace(/\s+/g, '')
 		let testArr = testStr.split(/[\n,]/);
-		
+		console.log(testArr)
 	}
 
 	render() {
