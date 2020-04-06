@@ -23,8 +23,12 @@ class Submit extends React.Component {
 	}
 
 	handleSubmit(e) {
-
 		//submit to DB
+		Axios.post('/user', {
+			data:this.state
+		})
+		.then((res) => {console.log(res)})
+		.catch((err) => {console.log(err)})
 		//read from DB
 		//run verification functions
 		//initiate progress bar
@@ -33,6 +37,7 @@ class Submit extends React.Component {
 		// let trimStr = testStr.replace(/\s+/g, '')
 		let testArr = testStr.split(/[\n,]/);
 		console.log(testArr)
+
 	}
 	handleImport(e) {
 		this.setState({
@@ -52,13 +57,9 @@ class Submit extends React.Component {
 					<button onClick={() => this.handleSubmit()}>Submit!</button>
 				</div>
 				<p>CSV Import</p>
-<<<<<<< HEAD
-				<CSV onFileLoaded={(data, fileInfo) => console.dir(data)} />
-=======
 				<CSV onFileLoaded={(data, fileInfo) => this.handleImport(data)}/>
 				<button onClick={()=> console.log(this.state.task)} />
 				<CSVLink data={this.state.submission}>Download me</CSVLink>;
->>>>>>> b4eb054ff1e4dbc21f6afc51ae9b12b14c744180
 			</div>
 		);
 	}
