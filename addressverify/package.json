@@ -14,15 +14,17 @@
     "react-csv-reader": "^3.0.5",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
-    "server-accepts-email": "^1.11.1"
+    "server-accepts-email": "^1.11.1",
+    "proxy": "http://localhost:4523"
+     
   },
   "scripts": {
-    "proxy": "http://localhost:4523",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:4523",
   "eslintConfig": {
     "extends": "react-app"
   },
