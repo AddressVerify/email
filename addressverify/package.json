@@ -7,14 +7,17 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
+    "express": "^4.17.1",
     "mysql": "^2.18.1",
     "react": "^16.13.1",
+    "react-csv": "^2.0.3",
     "react-csv-reader": "^3.0.5",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "server-accepts-email": "^1.11.1"
   },
   "scripts": {
+    "proxy": "http://localhost:4523",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
