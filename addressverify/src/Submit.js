@@ -15,7 +15,6 @@ class Submit extends React.Component {
 		this.setState({
 			submission: e.target.value
 		})
-		console.log(typeof e.target.value)
 	}
 
 	handleSubmit(e) {
@@ -42,7 +41,7 @@ class Submit extends React.Component {
 					<button onClick={() => this.handleSubmit()}>Submit!</button>
 				</div>
 				<p>CSV Import</p>
-				<CSV onFileLoaded={(data, fileInfo) => console.dir(data, fileInfo)} />
+				<CSV onFileLoaded={(data, fileInfo) => console.dir(data)} />
 			</div>
 		);
 	}
