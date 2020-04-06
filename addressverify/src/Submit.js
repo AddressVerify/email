@@ -1,4 +1,5 @@
 import React from 'react';
+import CSV from 'react-csv-reader';
 
 class Submit extends React.Component {
 	constructor(props) {
@@ -34,11 +35,14 @@ class Submit extends React.Component {
 			<div>
 				<div>
 					<p>Input Email Addresses</p>
+					<p>Single</p>
 					<textarea onChange={(e) => this.handleChange(e)}></textarea>
 				</div>
 				<div>
 					<button onClick={() => this.handleSubmit()}>Submit!</button>
 				</div>
+				<p>CSV Import</p>
+				<CSV onFileLoaded={(data, fileInfo) => console.dir(data, fileInfo)} />
 			</div>
 		);
 	}
