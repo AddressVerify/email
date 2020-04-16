@@ -36,7 +36,15 @@ class Submit extends React.Component {
 		let testStr = this.state.submission;
 		// let trimStr = testStr.replace(/\s+/g, '')
 		let testArr = testStr.split(/[\n,]/);
-		console.log(testArr)
+		// for(let i = 0; i < testArr.length; i+=100){
+		// 	if(i + 100 > testArr.length){
+		// 		let end = testArr.length - 1;
+		// 		console.log(testArr.slice(i, end))
+		// 		break
+		// 	}
+		// 	console.log(testArr.slice(i, i + 100))
+		// }
+		console.log(testArr);
 
 	}
 	handleImport(e) {

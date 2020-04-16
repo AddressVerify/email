@@ -9,14 +9,13 @@
     "axios": "^0.19.2",
     "express": "^4.17.1",
     "mysql": "^2.18.1",
+    "proxy": "http://localhost:4523",
     "react": "^16.13.1",
     "react-csv": "^2.0.3",
     "react-csv-reader": "^3.0.5",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
-    "server-accepts-email": "^1.11.1",
-    "proxy": "http://localhost:4523"
-     
+    "server-accepts-email": "^1.11.1"
   },
   "scripts": {
     "start": "react-scripts start",
