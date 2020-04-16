@@ -9,7 +9,10 @@ app.use(express.json());
 
 
 app.post('/user', (req, res)=>{
-    db.userWrite()
+    console.log(req.body.data);
+    for(let i = 0; i < req.body.data.length; i++){
+        db.userWrite(req.body.data[i]);
+    }
 });
 
 app.listen(port, () => {
