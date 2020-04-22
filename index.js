@@ -70,10 +70,15 @@ const checker = function(email, callback, timeout, from_email) {
 };
 
 
-const print = function(printMe){
-    console.log(printMe);
-}
-checker('blahblah@gmail.com', print(data), 1000, 'milessobhani@gmail.com')
+
+
+checker('blahblah@gmail.com', (err, data) => {
+	if(err){
+		console.log(err)
+	} else {
+		console.log(data);
+	}
+}, 1000, 'milessobhani@gmail.com')
 
 
 
@@ -89,12 +94,12 @@ checker('blahblah@gmail.com', print(data), 1000, 'milessobhani@gmail.com')
 
 
 
-dns.lookup('1231232fawefoijoijoijoij.csdff.jwowfjiej', options)
-.then((result) => {
-    console.log('dns results', result);
-  }).catch((err) => {
-      console.log('dns error', err);
-  });
+// dns.lookup('1231232fawefoijoijoijoij.csdff.jwowfjiej', options)
+// .then((result) => {
+//     console.log('dns results', result);
+//   }).catch((err) => {
+//       console.log('dns error', err);
+//   });
 
 // dns.resolveMx('gmail.com', options)
 // .then((result) => {
@@ -104,13 +109,13 @@ dns.lookup('1231232fawefoijoijoijoij.csdff.jwowfjiej', options)
 // });
 
 
-dns.resolveMx('reddit.com', options)
-.then((result) => {
-   console.log('mx results', result);
-    if(result.exchange){
-      return [true, 'MX check passed!']
-    }
-    return [false, 'MX Check failed'];
-}).catch((err) => {
-    console.log('error', err);
-});
+// dns.resolveMx('reddit.com', options)
+// .then((result) => {
+//    console.log('mx results', result);
+//     if(result.exchange){
+//       return [true, 'MX check passed!']
+//     }
+//     return [false, 'MX Check failed'];
+// }).catch((err) => {
+//     console.log('error', err);
+// });

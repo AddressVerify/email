@@ -24,8 +24,20 @@ class Submit extends React.Component {
 
 	handleSubmit(e) {
 		//submit to DB
-		Axios.post('/user', {
-			data:this.state
+		let testStr = this.state.submission;
+		// let trimStr = testStr.replace(/\s+/g, '')
+		let testArr = testStr.split(/[\n,]/);
+
+		// Axios.post('/user', {
+		// 	data:this.state
+		// })
+		// .then((res) => {console.log(res)})
+		// .then((verify(e)))
+		// .catch((err) => {console.log(err)})
+		Axios.post('/verify', {
+			data:testArr,
+			inactive:[1],
+			jobSet:null
 		})
 		.then((res) => {console.log(res)})
 		.catch((err) => {console.log(err)})
@@ -33,9 +45,7 @@ class Submit extends React.Component {
 		//run verification functions
 		//initiate progress bar
 		//hide submission form
-		let testStr = this.state.submission;
-		// let trimStr = testStr.replace(/\s+/g, '')
-		let testArr = testStr.split(/[\n,]/);
+
 		// for(let i = 0; i < testArr.length; i+=100){
 		// 	if(i + 100 > testArr.length){
 		// 		let end = testArr.length - 1;
@@ -44,7 +54,7 @@ class Submit extends React.Component {
 		// 	}
 		// 	console.log(testArr.slice(i, i + 100))
 		// }
-		console.log(testArr);
+		// console.log(testArr);
 
 	}
 	handleImport(e) {
@@ -62,7 +72,7 @@ class Submit extends React.Component {
 					<textarea onChange={(e) => this.handleChange(e)}></textarea>
 				</div>
 				<div>
-					<button onClick={() => this.handleSubmit()}>Submit!</button>
+					<button onClick={() => this.handleSubmit()}>Submit and verify!</button>
 				</div>
 				<p>CSV Import</p>
 				<CSV onFileLoaded={(data, fileInfo) => this.handleImport(data)}/>
