@@ -10,9 +10,8 @@ class Submit extends React.Component {
 		this.state = {
 			submission: 'fire,water,air,dirt',
 			emails:[],
-			verified:[],
+			verified:[['mom@gmail.com', true, 'something']],
 			task: ['lmao','fire','water']
-
 		}
 
 	}
@@ -30,19 +29,28 @@ class Submit extends React.Component {
 			inactive:[1],
 			jobSet:null
 		})
-		.then((res) => {console.log(res)})
+		.then((res) => {
+			console.log(res);
+			this.setState({
+				verified:res.data,
+				emails:[]
+			})
+		})
 		.catch((err) => {console.log(err)})
-		.finally((res) => this.setState({
-			emails:[],
-			verified:res
-		}))
+
 	}
 
 	handleSubmit(e) {
 		//submit to DB
-		let testStr = this.state.submission;
+		// let testStr = this.state.submission;
 		// let trimStr = testStr.replace(/\s+/g, '')
-		let testArr = testStr.split(/[\n,]/);
+		// let testArr = testStr.split(/[\n,]/);
+		let testStr = this.state.submission;
+		testStr = testStr.replace(/[\n,]/g,',');
+		testStr = testStr.replace(/\s+/g, '');
+		console.log(testStr);
+		let testArr = testStr.split(',');
+		console.log(testArr)		
 		this.setState({
 			emails:testArr,
 			submission:''
@@ -76,6 +84,10 @@ class Submit extends React.Component {
 		})
 	}
 
+	showState(){
+		console.log(this.state)
+	}
+
 	render() {
 		return (
 			<div>
@@ -91,8 +103,11 @@ class Submit extends React.Component {
 				<div>
 					<button onClick={() => this.handleSubmit()}>Submit</button>
 					<button onClick={() => this.handleVerify()}>Verify Submissions</button>
+					<button onClick={() => this.showState()}>Show State</button>
 					<p>
-					 {this.state.verified}
+						{this.state.verified.reduce((acc, address) => {
+								return acc + address[1];
+						}, 0)} valid addresses out of {this.state.verified.length}
 					</p>				
 				</div>
 				<p>CSV Import</p>

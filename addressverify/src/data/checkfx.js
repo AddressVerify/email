@@ -94,20 +94,18 @@ const verify = function (email, inactiveTests, jobSet) {
         const temp = await functionArr[i](email)
         // console.log(typeof temp);
         if (!temp[0]) {
-          verdict = temp;
+          verdict = temp
+          verdict.unshift(email);
           break;
         }
       }
-      verdict = [true, 'email valid!'];
+      verdict = [email, true, 'email valid!'];
     }
     return verdict;
   }
   return init()
 }
 
-// dns.resolveMx('gmail.com', options).then((results) => console.log(results));
-
-// verify('milessobhani@gmail.com', [1], null).then((result) => {console.log(result)});
 module.exports = {
   verify:verify
 }

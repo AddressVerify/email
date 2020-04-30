@@ -17,16 +17,23 @@ app.use(express.json());
 
 app.post('/verify', (req, res) => {
     let resultsArray = [];
-    req.body.data.forEach((email) => {verify(email, req.body.inactive, req.body.jobSet)
-        .then((result) => {
-            resultsArray.push(result)
-         if(resultsArray.length === req.body.data.length){
-            Promise.all(resultsArray).then((result) => {res.send(result)})
-         }   
+    req.body.data.forEach((email) => {resultsArray.push(verify(email, req.body.inactive, req.body.jobSet))
         })
+        Promise.all(resultsArray)
+        .then((result) => {res.send(result)})
         .catch((err) => console.log(err));	
-    })  
+    // let resultsArray = [];
+    // req.body.data.forEach((email, index) => {verify(email, req.body.inactive, req.body.jobSet)
+    //     .then((result) => {
+    //         resultsArray[index] = result
+    //      if(index === req.body.data.length - 1){
+    //         Promise.all(resultsArray).then((result) => {res.send(result)})
+    //      }   
+    //     })
+    //     .catch((err) => console.log(err));	
+    // }) 
 })
+
 
 app.listen(port, () => {
     console.log(`I can hear you at  ${port}`);
