@@ -21,3 +21,8 @@ https://github.com/firebase/firebaseui-web-react
 
 Link for mx/dns lookup
 https://github.com/nmanousos/email-existence/blob/master/index.js
+
+
+post directions
+
+
