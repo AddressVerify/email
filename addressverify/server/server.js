@@ -1,12 +1,11 @@
 const express = require('express');
 const path = require('path');
-const port = 8080;
 const app = express();
 const {verify} = require('../src/data/checkfx');
 // const db = require("../database/db");
 app.use(express.static(path.join(__dirname + '../public')));
 app.use(express.json());
-
+const port = process.env.DB_PORT || 60000;
 // working db route
 // app.post('/user', (req, res)=>{
 //     console.log(req.body.data);

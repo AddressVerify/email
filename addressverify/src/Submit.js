@@ -25,7 +25,11 @@ class Submit extends React.Component {
 	}
 
 	handleVerify(){
-		Axios.post('/verify', {
+
+		//production 
+		//Axios.post('http://sendmatic.com/app/verify', {
+		//dev
+			Axios.post('/verify', {
 			data:this.state.emails,
 			inactive:[1],
 			jobSet:null
