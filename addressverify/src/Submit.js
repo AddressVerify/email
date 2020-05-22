@@ -9,10 +9,10 @@ class Submit extends React.Component {
 		super(props);
 		this.state = {
 			submission: '',
-			emails:[],
-			verified:[['mom@gmail.com', true, 'something']],
+			emails: [],
+			verified: [['mom@gmail.com', true, 'something']],
 			csv: [],
-			downloadActive:false
+			downloadActive: false
 		}
 
 	}
@@ -24,38 +24,38 @@ class Submit extends React.Component {
 		})
 	}
 
-	handleVerify(){
+	handleVerify() {
 
 		//production 
 		//Axios.post('http://sendmatic.com/app/verify', {
 		//dev
-			Axios.post('/verify', {
-			data:this.state.emails,
-			inactive:[1],
-			jobSet:null
+		Axios.post('/verify', {
+			data: this.state.emails,
+			inactive: [1],
+			jobSet: null
 		})
-		.then((res) => {
-			console.log(res);
-			// if(this.state.csv.length > 0){
-			// 	this.setState({
-			// 		csv:
-			// 	})
-			// }
-			this.setState({
-				verified:res.data,
-				emails:[]
+			.then((res) => {
+				console.log(res);
+				// if(this.state.csv.length > 0){
+				// 	this.setState({
+				// 		csv:
+				// 	})
+				// }
+				this.setState({
+					verified: res.data,
+					emails: []
+				})
 			})
-		})
-		.then(() => {
-			let tempCsv = this.state.csv
-			tempCsv.forEach((line, index) => {
-				line.push(this.state.verified[index][1]||"false", this.state.verified[index][2])
+			.then(() => {
+				let tempCsv = this.state.csv
+				tempCsv.forEach((line, index) => {
+					line.push(this.state.verified[index][1] || "false", this.state.verified[index][2])
+				})
+				this.setState({
+					csv: tempCsv
+				})
 			})
-			this.setState({
-				csv:tempCsv
-			})
-		})
-		.catch((err) => {console.log(err)})
+			.catch((err) => { console.log(err) })
 
 	}
 
@@ -65,14 +65,14 @@ class Submit extends React.Component {
 		// let trimStr = testStr.replace(/\s+/g, '')
 		// let testArr = testStr.split(/[\n,]/);
 		let testStr = this.state.submission;
-		testStr = testStr.replace(/[\n,]/g,',');
+		testStr = testStr.replace(/[\n,]/g, ',');
 		testStr = testStr.replace(/\s+/g, '');
 		console.log(testStr);
 		let testArr = testStr.split(',');
-		console.log(testArr)		
+		console.log(testArr)
 		this.setState({
-			emails:testArr,
-			submission:''
+			emails: testArr,
+			submission: ''
 		})
 		// Axios.post('/user', {
 		// 	data:this.state
@@ -104,11 +104,11 @@ class Submit extends React.Component {
 		})
 		this.setState({
 			csv: e,
-			emails:extracted
+			emails: extracted
 		})
 	}
 
-	showState(){
+	showState() {
 		console.log(this.state)
 	}
 
@@ -123,29 +123,31 @@ class Submit extends React.Component {
 					<p>Total Submissions Entered</p>
 					{this.state.emails.length}
 					<p>Input Email Addresses</p>
-					<textarea value={this.state.submission} onChange={(e) => this.handleChange(e)}></textarea>
+					<textarea
+						className={"textarea is-primary"}
+						value={this.state.submission}
+						onChange={(e) => this.handleChange(e)}>
+					</textarea>
 					<div>
 					</div>
 				</div>
 				<div>
-					<button onClick={() => this.handleSubmit()}>Submit</button>
-					<button onClick={() => this.handleVerify()}>Verify Submissions</button>
-					<button onClick={() => this.showState()}>Show State</button>			
+					<button className={"button is-primary"} onClick={() => this.handleSubmit()}>Submit</button>
+					<button className={"button is-primary"} onClick={() => this.handleVerify()}>Verify Submissions</button>
+					<button className={"button is-primary"} onClick={() => this.showState()}>Show State</button>
 				</div>
 				<p>CSV Import</p>
-				<CSV onFileLoaded={(data, fileInfo) => this.handleImport(data)}/>
-				<button onClick={()=> console.log(this.state.task)} />
-				
-				<CSVLink 
-					data={this.state.csv}>
-						Download Verified CSV
+				<CSV onFileLoaded={(data, fileInfo) => this.handleImport(data)} />
+				<CSVLink
+					data={this.state.csv} className={"button is-link"}>
+					Download Verified CSV
 				</CSVLink>
-				<button onClick={() => this.handleVerify()}>Verify CSV</button>
+				<button className={"button is-primary"} onClick={() => this.handleVerify()}>Verify CSV</button>
 				<p>
-						{this.state.verified.reduce((acc, address) => {
-								return acc + address[1];
-						}, 0)} valid addresses out of {this.state.verified.length}
-					</p>	
+					{this.state.verified.reduce((acc, address) => {
+						return acc + address[1];
+					}, 0)} valid addresses out of {this.state.verified.length}
+				</p>
 			</div>
 		);
 	}

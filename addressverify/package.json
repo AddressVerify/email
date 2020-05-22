@@ -1,6 +1,6 @@
 {
   "name": "sendmatic",
-  "homepage":"http://sendmatic.com/app",
+  "homepage": "http://sendmatic.com/app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,9 +8,10 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
+    "bulma": "^0.8.2",
     "express": "^4.17.1",
     "mysql": "^2.18.1",
-    "proxy": "http://localhost:8080",
+    "proxy": "http://localhost:60000",
     "react": "^16.13.1",
     "react-csv": "^2.0.3",
     "react-csv-reader": "^3.0.5",
@@ -25,7 +26,7 @@
     "eject": "react-scripts eject",
     "server": "node server.js"
   },
-  "proxy": "http://localhost:8080",
+  "proxy": "http://localhost:60000",
   "eslintConfig": {
     "extends": "react-app"
   },
