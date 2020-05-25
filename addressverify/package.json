@@ -11,6 +11,7 @@
     "bulma": "^0.8.2",
     "express": "^4.17.1",
     "mysql": "^2.18.1",
+    "node-sass": "^4.14.1",
     "proxy": "http://localhost:60000",
     "react": "^16.13.1",
     "react-csv": "^2.0.3",
