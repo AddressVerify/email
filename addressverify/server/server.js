@@ -24,6 +24,10 @@ app.post('/verify', (req, res) => {
         .catch((err) => res.send(err));	
 })
 
+app.post('/collection', (req, res) => {
+    res.send(req.body.data)
+})
+
 
 app.listen(port, () => {
     console.log(`I can hear you at  ${port}`);

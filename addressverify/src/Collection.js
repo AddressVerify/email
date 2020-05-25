@@ -17,13 +17,13 @@ export default function Collection(props) {
       </div>
       {isOpen ?
         props.data.jobs.map((job) =>
-          <div className={"job"}>
-            <Job data={job} />
+          <div className={"job level"}>
+            <Job data={job}/>
           </div>
         )
         : ''}
       {isOpen ?
-        <AddJob />
+        <AddJob jobNumber={props.data.jobs.length + 1}/>
         : ''}
     </>
   );

@@ -1,11 +1,25 @@
 import React from 'react';
 
 
-export default function Job(props){
+export default function Job(props) {
   return (
     <>
-      {props.data.jobName}
-      <span>{props.data.verifiedValid} / {props.data.verifiedTotal}</span>
+
+        <div className={"level-item job-display"}>
+          {props.data.jobName}
+        </div>
+        <div className={"level-item job-display"}>
+          {props.data.time}
+        </div>
+
+      
+        <div className={"level-item job-display"}>
+          {props.data.verifiedValid} Passed
+        </div>
+        <div className={"level-item job-display"}>
+          {props.data.verifiedTotal} Records
+        </div>
+
     </>
   );
 }

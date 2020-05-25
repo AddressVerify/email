@@ -10,9 +10,9 @@ class Submit extends React.Component {
 		this.state = {
 			submission: '',
 			emails: [],
-			verified: [['mom@gmail.com', true, 'something']],
+			verified: [],
 			csv: [],
-			downloadActive: false
+			downloadActive: false,
 		}
 
 	}
@@ -65,7 +65,7 @@ class Submit extends React.Component {
 		// let trimStr = testStr.replace(/\s+/g, '')
 		// let testArr = testStr.split(/[\n,]/);
 		let testStr = this.state.submission;
-		testStr = testStr.replace(/[\n,]/g, ',');
+		// testStr = testStr.replace(/[\n,]/g, ',');
 		testStr = testStr.replace(/\s+/g, '');
 		console.log(testStr);
 		let testArr = testStr.split(',');
@@ -119,6 +119,46 @@ class Submit extends React.Component {
 	render() {
 		return (
 			<div>
+				<div className="modal is-active">
+					<div className="modal-background"></div>
+					<div className="modal-card">
+						<header className="modal-card-head">
+							<p className="modal-card-title">Verify Email Addresses</p>
+							<button className="delete" aria-label="close"
+								onClick={this.props.closer}>
+							</button>
+						</header>
+						<section className="modal-card-body">
+							Job Name
+						<input className="input is-primary" type="text" placeholder="Text input"
+								defaultValue={`Job ${this.props.num}`}></input>
+							<p>Records Detected</p>
+							{this.state.emails.length}
+							<p>CSV Import</p>
+							<CSV onFileLoaded={(data, fileInfo) => this.handleImport(data)} />
+							<CSVLink
+								data={this.state.csv} className={"button is-link"}>
+								Download Verified CSV
+							</CSVLink>
+							{this.state.verified.length > 0 ?
+								<p>
+									{this.state.verified.reduce((acc, address) => {
+										return acc + address[1];
+									}, 0)} valid addresses out of {this.state.verified.length}
+								</p>
+								: null}
+
+						</section>
+						<footer className="modal-card-foot">
+							<button className="button is-success"
+								onClick={() => this.handleVerify()}>Verify Results</button>
+							<button className="button" onClick={this.props.closer}>Cancel</button>
+						</footer>
+					</div>
+				</div>
+
+
+
 				<div>
 					<p>Total Submissions Entered</p>
 					{this.state.emails.length}
@@ -132,9 +172,12 @@ class Submit extends React.Component {
 					</div>
 				</div>
 				<div>
-					<button className={"button is-primary"} onClick={() => this.handleSubmit()}>Submit</button>
-					<button className={"button is-primary"} onClick={() => this.handleVerify()}>Verify Submissions</button>
-					<button className={"button is-primary"} onClick={() => this.showState()}>Show State</button>
+					<button className={"button is-primary"} onClick={() => this.handleSubmit()}>
+						Submit</button>
+					<button className={"button is-primary"} onClick={() => this.handleVerify()}>
+						Verify Submissions</button>
+					<button className={"button is-primary"} onClick={() => this.showState()}>
+						Show State</button>
 				</div>
 				<p>CSV Import</p>
 				<CSV onFileLoaded={(data, fileInfo) => this.handleImport(data)} />
@@ -142,12 +185,15 @@ class Submit extends React.Component {
 					data={this.state.csv} className={"button is-link"}>
 					Download Verified CSV
 				</CSVLink>
-				<button className={"button is-primary"} onClick={() => this.handleVerify()}>Verify CSV</button>
-				<p>
-					{this.state.verified.reduce((acc, address) => {
-						return acc + address[1];
-					}, 0)} valid addresses out of {this.state.verified.length}
-				</p>
+				<button className={"button is-primary"} onClick={() => this.handleVerify()}>
+					Verify CSV</button>
+				{this.state.verified.length > 0 ?
+					<p>
+						{this.state.verified.reduce((acc, address) => {
+							return acc + address[1];
+						}, 0)} valid addresses out of {this.state.verified.length}
+					</p>
+					: null}
 			</div>
 		);
 	}

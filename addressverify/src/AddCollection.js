@@ -1,9 +1,17 @@
 import React from 'react';
+import CollectionModal from './CollectionModal';
 
-export default function AddCollection(props){
+export default function AddCollection(props) {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const toggleModal = () => setIsOpen(!isOpen);
   return (
-    <div className={"collection"}>
-      <button className={"button is-primary wide"}>+ New Collection</button>
-    </div>
+    <>
+      <div className={"collection"}>
+        <button className={"button is-primary wide"} onClick={toggleModal}>+ New Collection</button>
+      </div>
+      {isOpen ?
+        <CollectionModal new={props.new} closer={toggleModal} />
+        : ''}
+    </>
   );
 }

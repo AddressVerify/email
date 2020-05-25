@@ -10,7 +10,7 @@ export default function Collections(props){
         <Collection data={coll}/>
       </div>
       )}
-      <AddCollection/>
+      <AddCollection new={props.new}/>
     </div>
   );
 }

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import Submit from './Submit.js';
 import Collections from './Collections.js';
 import './App.sass';
+import Axios from "axios";
+
 
 class App extends Component {
   constructor(props) {
@@ -56,9 +57,34 @@ class App extends Component {
             }
           ]
         }
-      ]
+      ],
     }
+    this.handleNew = this.handleNew.bind(this);
   }
+
+  handleNew(e){
+    //Currently using local data, no DB yet
+    Axios.post('/collection', {
+			data: e,
+		})
+			.then((res) => {
+        let temp = this.state.collections;
+        let newCollData = 
+        {
+          name: res.data,
+          collTotal:0,
+          collValid:0,
+          jobs:[]
+        };
+        temp.push(newCollData);
+        console.log(temp);
+				this.setState({
+          collections:temp
+				})
+			})
+			.catch((err) => { console.log(err) })
+  }
+
   render() {
     return (
       <>
@@ -75,11 +101,8 @@ class App extends Component {
           </div>
         </section>
         <>
-          <Collections collections={this.state.collections} />
+          <Collections new={this.handleNew} collections={this.state.collections} />
         </>
-        <div className="Main">
-          <Submit />
-        </div>
       </>
     );
   }
