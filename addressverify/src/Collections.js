@@ -5,9 +5,9 @@ import AddCollection from './AddCollection'
 export default function Collections(props){
   return (
     <div>
-      {props.collections.map((coll) => 
+      {props.collections.map((coll, index) => 
       <div className={"collection"}>
-        <Collection data={coll}/>
+        <Collection newJob={props.newJob} data={coll} key={index}/>
       </div>
       )}
       <AddCollection new={props.new}/>

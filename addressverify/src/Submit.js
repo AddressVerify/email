@@ -1,6 +1,6 @@
 import React from 'react';
 import CSV from 'react-csv-reader';
-import { CSVLink, CSVDownload } from "react-csv";
+import { CSVLink } from "react-csv";
 import Axios from "axios";
 
 
@@ -12,23 +12,25 @@ class Submit extends React.Component {
 			emails: [],
 			verified: [],
 			csv: [],
-			downloadActive: false,
+			jobName:`Job ${this.props.num}`
 		}
 
 	}
 
-	handleChange(e) {
+	handleChange(e, stateName) {
 		//updates state on change
+		console.log(e)
 		this.setState({
-			submission: e.target.value
+			[stateName]: e.target.value
 		})
 	}
 
 	handleVerify() {
-
 		//production 
 		//Axios.post('http://sendmatic.com/app/verify', {
 		//dev
+		var i = this.props.i;
+		var name = this.state.jobName;
 		Axios.post('/verify', {
 			data: this.state.emails,
 			inactive: [1],
@@ -43,8 +45,8 @@ class Submit extends React.Component {
 				// }
 				this.setState({
 					verified: res.data,
-					emails: []
-				})
+					emails: [],
+				}, this.props.newJob(res.data, i, name))
 			})
 			.then(() => {
 				let tempCsv = this.state.csv
@@ -56,6 +58,8 @@ class Submit extends React.Component {
 				})
 			})
 			.catch((err) => { console.log(err) })
+			.finally(() => this.props.closer()
+			)
 
 	}
 
@@ -65,37 +69,16 @@ class Submit extends React.Component {
 		// let trimStr = testStr.replace(/\s+/g, '')
 		// let testArr = testStr.split(/[\n,]/);
 		let testStr = this.state.submission;
-		// testStr = testStr.replace(/[\n,]/g, ',');
+		testStr = testStr.replace(/[\n,]/g, ',');
 		testStr = testStr.replace(/\s+/g, '');
 		console.log(testStr);
 		let testArr = testStr.split(',');
-		console.log(testArr)
+		let filteredArr = testArr.filter((email) => email.length > 1)
+		console.log(filteredArr)
 		this.setState({
-			emails: testArr,
+			emails: filteredArr,
 			submission: ''
 		})
-		// Axios.post('/user', {
-		// 	data:this.state
-		// })
-		// .then((res) => {console.log(res)})
-		// .then((verify(e)))
-		// .catch((err) => {console.log(err)})
-
-		//read from DB
-		//run verification functions
-		//initiate progress bar
-		//hide submission form
-
-		// for(let i = 0; i < testArr.length; i+=100){
-		// 	if(i + 100 > testArr.length){
-		// 		let end = testArr.length - 1;
-		// 		console.log(testArr.slice(i, end))
-		// 		break
-		// 	}
-		// 	console.log(testArr.slice(i, i + 100))
-		// }
-		// console.log(testArr);
-
 	}
 	handleImport(e) {
 		let extracted = []
@@ -112,9 +95,9 @@ class Submit extends React.Component {
 		console.log(this.state)
 	}
 
-	handleDownload() {
-
-	}
+  handleClick(){
+    this.handleVerify()
+  }
 
 	render() {
 		return (
@@ -130,7 +113,8 @@ class Submit extends React.Component {
 						</header>
 						<section className="modal-card-body">
 							Job Name
-						<input className="input is-primary" type="text" placeholder="Text input"
+						<input className="input is-primary" type="text"
+								onChange={(e) => this.handleChange(e, 'jobName')}
 								defaultValue={`Job ${this.props.num}`}></input>
 							<p>Records Detected</p>
 							{this.state.emails.length}
@@ -151,7 +135,7 @@ class Submit extends React.Component {
 						</section>
 						<footer className="modal-card-foot">
 							<button className="button is-success"
-								onClick={() => this.handleVerify()}>Verify Results</button>
+								onClick={() => this.handleClick()}>Verify Results</button>
 							<button className="button" onClick={this.props.closer}>Cancel</button>
 						</footer>
 					</div>
@@ -159,43 +143,46 @@ class Submit extends React.Component {
 
 
 
-				<div>
-					<p>Total Submissions Entered</p>
-					{this.state.emails.length}
-					<p>Input Email Addresses</p>
-					<textarea
-						className={"textarea is-primary"}
-						value={this.state.submission}
-						onChange={(e) => this.handleChange(e)}>
-					</textarea>
-					<div>
-					</div>
-				</div>
-				<div>
-					<button className={"button is-primary"} onClick={() => this.handleSubmit()}>
-						Submit</button>
-					<button className={"button is-primary"} onClick={() => this.handleVerify()}>
-						Verify Submissions</button>
-					<button className={"button is-primary"} onClick={() => this.showState()}>
-						Show State</button>
-				</div>
-				<p>CSV Import</p>
-				<CSV onFileLoaded={(data, fileInfo) => this.handleImport(data)} />
-				<CSVLink
-					data={this.state.csv} className={"button is-link"}>
-					Download Verified CSV
-				</CSVLink>
-				<button className={"button is-primary"} onClick={() => this.handleVerify()}>
-					Verify CSV</button>
-				{this.state.verified.length > 0 ?
-					<p>
-						{this.state.verified.reduce((acc, address) => {
-							return acc + address[1];
-						}, 0)} valid addresses out of {this.state.verified.length}
-					</p>
-					: null}
 			</div>
 		);
 	}
 }
 export default Submit;
+
+
+
+{/* <div>
+	<p>Total Submissions Entered</p>
+	{this.state.emails.length}
+	<p>Input Email Addresses</p>
+	<textarea
+		className={"textarea is-primary"}
+		value={this.state.submission}
+		onChange={(e) => this.handleChange(e, 'submission')}>
+	</textarea>
+	<div>
+	</div>
+</div>
+<div>
+	<button className={"button is-primary"} onClick={() => this.handleSubmit()}>
+		Submit</button>
+	<button className={"button is-primary"} onClick={() => this.handleVerify()}>
+		Verify Submissions</button>
+	<button className={"button is-primary"} onClick={() => this.showState()}>
+		Show State</button>
+</div>
+<p>CSV Import</p>
+<CSV onFileLoaded={(data, fileInfo) => this.handleImport(data)} />
+<CSVLink
+	data={this.state.csv} className={"button is-link"}>
+	Download Verified CSV
+</CSVLink>
+<button className={"button is-primary"} onClick={() => this.handleVerify()}>
+	Verify CSV</button>
+{this.state.verified.length > 0 ?
+	<p>
+		{this.state.verified.reduce((acc, address) => {
+			return acc + address[1];
+		}, 0)} valid addresses out of {this.state.verified.length}
+	</p>
+	: null} */}

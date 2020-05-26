@@ -3,6 +3,7 @@ import './App.css';
 import Collections from './Collections.js';
 import './App.sass';
 import Axios from "axios";
+import Footer from './Footer.js'
 
 
 class App extends Component {
@@ -63,51 +64,65 @@ class App extends Component {
     this.saveJob = this.saveJob.bind(this);
   }
 
-  saveJob(e){
-    
+  saveJob(data, i, name) {
+    let temp = this.state.collections;
+    let newJob = {
+      jobName: name,
+      time: new Date().toLocaleString(),
+      verifiedTotal: data.length,
+      verifiedValid:
+        data.reduce((a, c) => {
+          return a + c[1]
+        }, 0)
+    }
+    temp[i].jobs.push(newJob)
+    this.setState({
+      collections: temp
+    })
   }
 
-  handleNew(e){
+  handleNew(e) {
     //Currently using local data, no DB yet
     Axios.post('/collection', {
-			data: e,
-		})
-			.then((res) => {
+      data: e,
+    })
+      .then((res) => {
         let temp = this.state.collections;
-        let newCollData = 
+        let newCollData =
         {
           name: res.data,
-          collTotal:0,
-          collValid:0,
-          jobs:[]
+          collTotal: 0,
+          collValid: 0,
+          jobs: []
         };
         temp.push(newCollData);
         console.log(temp);
-				this.setState({
-          collections:temp
-				})
-			})
-			.catch((err) => { console.log(err) })
+        this.setState({
+          collections: temp
+        })
+      })
+      .catch((err) => { console.log(err) })
   }
 
   render() {
     return (
       <>
-        <section class="hero is-medium is-primary is-bold">
-          <div class="hero-body">
-            <div class="container">
-              <h1 class="title">
+        <section className="hero is-medium is-primary is-bold">
+          <div className="hero-body">
+            <div className="container">
+              <h1 className="title">
                 SendMatic
               </h1>
-              <h2 class="subtitle">
+              <h2 className="subtitle">
                 Welcome, {this.state.userName}!
               </h2>
             </div>
           </div>
         </section>
         <>
-          <Collections new={this.handleNew} collections={this.state.collections} />
+          <Collections key={'1'} newJob={this.saveJob} new={this.handleNew} collections={this.state.collections} />
         </>
+        <Footer/>
       </>
     );
   }

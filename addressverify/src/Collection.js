@@ -16,14 +16,14 @@ export default function Collection(props) {
         </div>
       </div>
       {isOpen ?
-        props.data.jobs.map((job) =>
+        props.data.jobs.map((job, i) =>
           <div className={"job level"}>
-            <Job data={job}/>
+            <Job key={i} data={job}/>
           </div>
         )
         : ''}
       {isOpen ?
-        <AddJob jobNumber={props.data.jobs.length + 1}/>
+        <AddJob i={props.key} newJob={props.newJob} jobNumber={props.data.jobs.length + 1}/>
         : ''}
     </>
   );
