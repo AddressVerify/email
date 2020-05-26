@@ -60,6 +60,11 @@ class App extends Component {
       ],
     }
     this.handleNew = this.handleNew.bind(this);
+    this.saveJob = this.saveJob.bind(this);
+  }
+
+  saveJob(e){
+    
   }
 
   handleNew(e){
