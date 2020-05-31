@@ -6,8 +6,8 @@ export default function Collections(props){
   return (
     <div>
       {props.collections.map((coll, index) => 
-      <div className={"collection"}>
-        <Collection newJob={props.newJob} data={coll} key={index}/>
+      <div key={index} className={"collection"}>
+        <Collection newJob={props.newJob} data={coll} index={index}/>
       </div>
       )}
       <AddCollection new={props.new}/>

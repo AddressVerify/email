@@ -19,18 +19,18 @@ class Submit extends React.Component {
 
 	handleChange(e, stateName) {
 		//updates state on change
-		console.log(e)
 		this.setState({
 			[stateName]: e.target.value
 		})
 	}
 
 	handleVerify() {
-		//production 
-		//Axios.post('http://sendmatic.com/app/verify', {
-		//dev
-		var i = this.props.i;
+
+		var coll = this.props.index;
 		var name = this.state.jobName;
+		//production 
+		// Axios.post('http://sendmatic.com/app/verify', {
+		//dev
 		Axios.post('/verify', {
 			data: this.state.emails,
 			inactive: [1],
@@ -46,7 +46,7 @@ class Submit extends React.Component {
 				this.setState({
 					verified: res.data,
 					emails: [],
-				}, this.props.newJob(res.data, i, name))
+				}, this.props.newJob(res.data, coll, name))
 			})
 			.then(() => {
 				let tempCsv = this.state.csv
@@ -71,10 +71,9 @@ class Submit extends React.Component {
 		let testStr = this.state.submission;
 		testStr = testStr.replace(/[\n,]/g, ',');
 		testStr = testStr.replace(/\s+/g, '');
-		console.log(testStr);
+		// console.log(testStr);
 		let testArr = testStr.split(',');
 		let filteredArr = testArr.filter((email) => email.length > 1)
-		console.log(filteredArr)
 		this.setState({
 			emails: filteredArr,
 			submission: ''
@@ -148,41 +147,3 @@ class Submit extends React.Component {
 	}
 }
 export default Submit;
-
-
-
-{/* <div>
-	<p>Total Submissions Entered</p>
-	{this.state.emails.length}
-	<p>Input Email Addresses</p>
-	<textarea
-		className={"textarea is-primary"}
-		value={this.state.submission}
-		onChange={(e) => this.handleChange(e, 'submission')}>
-	</textarea>
-	<div>
-	</div>
-</div>
-<div>
-	<button className={"button is-primary"} onClick={() => this.handleSubmit()}>
-		Submit</button>
-	<button className={"button is-primary"} onClick={() => this.handleVerify()}>
-		Verify Submissions</button>
-	<button className={"button is-primary"} onClick={() => this.showState()}>
-		Show State</button>
-</div>
-<p>CSV Import</p>
-<CSV onFileLoaded={(data, fileInfo) => this.handleImport(data)} />
-<CSVLink
-	data={this.state.csv} className={"button is-link"}>
-	Download Verified CSV
-</CSVLink>
-<button className={"button is-primary"} onClick={() => this.handleVerify()}>
-	Verify CSV</button>
-{this.state.verified.length > 0 ?
-	<p>
-		{this.state.verified.reduce((acc, address) => {
-			return acc + address[1];
-		}, 0)} valid addresses out of {this.state.verified.length}
-	</p>
-	: null} */}

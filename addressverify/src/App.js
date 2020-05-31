@@ -64,7 +64,7 @@ class App extends Component {
     this.saveJob = this.saveJob.bind(this);
   }
 
-  saveJob(data, i, name) {
+  saveJob(data, coll, name) {
     let temp = this.state.collections;
     let newJob = {
       jobName: name,
@@ -75,7 +75,9 @@ class App extends Component {
           return a + c[1]
         }, 0)
     }
-    temp[i].jobs.push(newJob)
+    temp[coll].collTotal += newJob.verifiedTotal;
+    temp[coll].collValid += newJob.verifiedValid;
+    temp[coll].jobs.push(newJob)
     this.setState({
       collections: temp
     })
@@ -83,6 +85,9 @@ class App extends Component {
 
   handleNew(e) {
     //Currently using local data, no DB yet
+    //production
+    // Axios.post('http://sendmatic.com/app/collection', {
+    //dev
     Axios.post('/collection', {
       data: e,
     })
@@ -96,12 +101,11 @@ class App extends Component {
           jobs: []
         };
         temp.push(newCollData);
-        console.log(temp);
         this.setState({
           collections: temp
         })
       })
-      .catch((err) => { console.log(err) })
+      .catch((err) => {console.log(err)})
   }
 
   render() {
@@ -120,7 +124,8 @@ class App extends Component {
           </div>
         </section>
         <>
-          <Collections key={'1'} newJob={this.saveJob} new={this.handleNew} collections={this.state.collections} />
+          <Collections newJob={this.saveJob} new={this.handleNew} 
+            collections={this.state.collections} />
         </>
         <Footer/>
       </>
