@@ -48,3 +48,7 @@ input {
   margin-top:5%;
 }
 
+img {
+  width: 120px;
+  min-height: 65px;
+}
