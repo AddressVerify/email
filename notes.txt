@@ -26,3 +26,62 @@ https://github.com/nmanousos/email-existence/blob/master/index.js
 post directions
 
 
+
+schema for user data
+
+username:string
+collections:array
+    collection:object
+        name:string
+        collTotal:num
+        collValid:num
+        downloadResults:link
+        jobs:array
+            job:object
+                timeOfCompletion:num
+                verifiedTotal:num 
+                verifiedValid:num
+                downloadResults:
+dedupe list: object
+
+
+
+
+
+Single submit section code
+
+{/* <div>
+	<p>Total Submissions Entered</p>
+	{this.state.emails.length}
+	<p>Input Email Addresses</p>
+	<textarea
+		className={"textarea is-primary"}
+		value={this.state.submission}
+		onChange={(e) => this.handleChange(e, 'submission')}>
+	</textarea>
+	<div>
+	</div>
+</div>
+<div>
+	<button className={"button is-primary"} onClick={() => this.handleSubmit()}>
+		Submit</button>
+	<button className={"button is-primary"} onClick={() => this.handleVerify()}>
+		Verify Submissions</button>
+	<button className={"button is-primary"} onClick={() => this.showState()}>
+		Show State</button>
+</div>
+<p>CSV Import</p>
+<CSV onFileLoaded={(data, fileInfo) => this.handleImport(data)} />
+<CSVLink
+	data={this.state.csv} className={"button is-link"}>
+	Download Verified CSV
+</CSVLink>
+<button className={"button is-primary"} onClick={() => this.handleVerify()}>
+	Verify CSV</button>
+{this.state.verified.length > 0 ?
+	<p>
+		{this.state.verified.reduce((acc, address) => {
+			return acc + address[1];
+		}, 0)} valid addresses out of {this.state.verified.length}
+	</p>
+	: null} */}

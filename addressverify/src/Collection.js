@@ -11,8 +11,8 @@ export default function Collection(props) {
         <div className={"level-left"}>
           {props.data.name}
         </div>
-        <div className={"level-right"}>
-        {props.data.collValid}/{props.data.collTotal}
+        <div className={"level-right fix-margin"}>
+        Records : {props.data.collTotal}
         </div>
       </div>
       {isOpen ?

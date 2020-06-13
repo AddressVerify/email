@@ -23,14 +23,30 @@ class Dashboard extends Component {
               time: '3:35 wednesday',
               verifiedTotal: 25,
               verifiedValid: 21,
-              jobResults: 'www.jobdownload.com/1'
+              jobResults: [['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', false, 'failure message'],]
             },
             {
               jobName: 'job 2',
               time: '12:35 sunday',
               verifiedTotal: 125,
               verifiedValid: 89,
-              jobResults: 'www.jobdownload.com/2'
+              jobResults: [['filleremail@something.com',true, 'email valid'],
+            ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+            ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+            ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+            ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+            ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+            ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+            ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+            ['filleremail@wrong.com,', false, 'failure message'],]
             }
           ]
         },
@@ -45,14 +61,30 @@ class Dashboard extends Component {
               time: '3:35 wednesday',
               verifiedTotal: 25,
               verifiedValid: 21,
-              jobResults: 'www.jobdownload.com/1'
+              jobResults: [['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', false, 'failure message'],]
             },
             {
               jobName: 'job 2',
               time: '12:35 sunday',
               verifiedTotal: 125,
               verifiedValid: 89,
-              jobResults: 'www.jobdownload.com/2'
+              jobResults: [['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', false, 'failure message'],]
             }
           ]
         }
@@ -66,12 +98,13 @@ class Dashboard extends Component {
     let temp = this.state.collections;
     let newJob = {
       jobName: name,
-      time: new Date().toLocaleString(),
+      time: Date(),
       verifiedTotal: data.length,
       verifiedValid:
         data.reduce((a, c) => {
           return a + c[1]
-        }, 0)
+        }, 0),
+      jobResults:data
     }
     temp[coll].collTotal += newJob.verifiedTotal;
     temp[coll].collValid += newJob.verifiedValid;
@@ -109,15 +142,15 @@ class Dashboard extends Component {
   render() {
     return (
       <>
-        <section className="hero is-medium is-primary is-bold">
-          <NavBar/>
+        <section className="hero is-medium is-primary">
           <div className="hero-body">
+          <NavBar user={this.props.user} signOut={this.props.signOut}/>
             <div className="container">
               <h1 className="title">
                 SendMatic
               </h1>
               <h2 className="subtitle">
-                Welcome, {this.state.userName}!
+                Welcome, {this.props.user.displayName}!
               </h2>
             </div>
           </div>

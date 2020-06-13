@@ -15,12 +15,16 @@ const port = process.env.DB_PORT || 60000;
 // });
 
 app.post('/verify', (req, res) => {
+    // console.log(req.body.data)
     let resultsArray = [];
     req.body.data.forEach((email) => {
         resultsArray.push(verify(email, req.body.inactive, req.body.jobSet))
         })
         Promise.all(resultsArray)
-        .then((result) => {res.send(result)})
+        .then((result) => {
+            // console.log(result);
+            res.send(result)
+        })
         .catch((err) => res.send(err));	
 })
 

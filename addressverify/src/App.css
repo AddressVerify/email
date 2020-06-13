@@ -32,12 +32,18 @@ span {
   padding-left: 1em;
   padding-right: 1em;
   padding-top: calc(0.5em - 1px);
+  background-color: white ;
+  font-size: small;
 }
 
 .coll-display{
   padding:1% 5%;
   border:1px solid lightgray;
   border-radius: 5px;
+}
+
+.fix-margin {
+  margin-top:0 !important;
 }
 
 input {
@@ -48,7 +54,7 @@ input {
   margin-top:5%;
 }
 
-img {
+.logo {
   width: 120px;
   min-height: 65px;
 }

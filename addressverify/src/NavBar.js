@@ -21,7 +21,7 @@ export default function NavBar(props) {
         <div id="navbarBasicExample" className={`navbar-menu ${isOpen ? 'is-active':''}`}>
           <div className="navbar-start">
             <a className="navbar-item" href="#">
-              <img src={Logo} alt="SendMatic Logo">
+              <img src={Logo} className={"logo"} alt="SendMatic Logo">
               </img>
             </a>
           </div>
@@ -32,8 +32,12 @@ export default function NavBar(props) {
                 <button className="button is-light">
                   <strong>Sign up</strong>
                 </button>
-                <button className="button is-light">
-                <strong>Login</strong>
+                <button className="button is-light" onClick={props.signOut}>
+                  {
+                    props.user
+                    ? <strong>Sign Out</strong>
+                    : <strong>Login</strong>
+                  }
           </button>
               </div>
             </div>

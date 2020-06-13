@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import './App.sass';
 import withFirebaseAuth from 'react-with-firebase-auth'
@@ -6,6 +6,9 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import firebaseConfig from './firebaseConfig';
 import logo from './Logo.png'
+import Dashboard from './Dashboard';
+import SignUp from './SignUp';
+
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
@@ -22,21 +25,14 @@ class App extends React.Component {
       signInWithGoogle,
     } = this.props;
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          {
-            user 
-              ? <p>Hello, {user.displayName}</p>
-              : <p>Please sign in.</p>
-          }
-          {
-            user
-              ? <button onClick={signOut}>Sign out</button>
-              : <button onClick={signInWithGoogle}>Sign in with Google</button>
-          }
-        </header>
-      </div>
+      <>
+        {
+          this.props.user
+            ? <Dashboard user={this.props.user} signOut={this.props.signOut}/>
+            :
+              <SignUp signInWithGoogle={this.props.signInWithGoogle}/>
+        }
+      </>
     );
   }
 }
