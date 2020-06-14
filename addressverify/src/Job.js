@@ -19,8 +19,8 @@ export default function Job(props) {
         </div>
       <div className={"level-item job-display"}>
         <CSVLink
-          data={props.data.jobResults} className={"button is-link"}>
-          Download Results
+          data={props.data.jobResults} className={"button is-link is-small"}>
+          Download CSV
 				</CSVLink>
       </div>
     </>

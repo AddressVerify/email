@@ -1,6 +1,5 @@
 import React from 'react';
 import CSV from 'react-csv-reader';
-import { CSVLink } from "react-csv";
 import Axios from "axios";
 
 
@@ -119,10 +118,6 @@ class Submit extends React.Component {
 							{this.state.emails.length}
 							<p>CSV Import</p>
 							<CSV onFileLoaded={(data, fileInfo) => this.handleImport(data)} />
-							<CSVLink
-								data={this.state.csv} className={"button is-link"}>
-								Download Verified CSV
-							</CSVLink>
 							{this.state.verified.length > 0 ?
 								<p>
 									{this.state.verified.reduce((acc, address) => {

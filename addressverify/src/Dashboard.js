@@ -20,33 +20,33 @@ class Dashboard extends Component {
           jobs: [
             {
               jobName: 'job 1',
-              time: '3:35 wednesday',
+              time: '6/1/2020, 4:22:28 PM',
               verifiedTotal: 25,
               verifiedValid: 21,
               jobResults: [['filleremail@something.com',true, 'email valid'],
-              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-              ['filleremail@wrong.com,', false, 'failure message'],]
+              ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', 'false', 'failure message'],]
             },
             {
               jobName: 'job 2',
-              time: '12:35 sunday',
+              time: '6/10/2020, 4:22:28 PM',
               verifiedTotal: 125,
               verifiedValid: 89,
               jobResults: [['filleremail@something.com',true, 'email valid'],
-            ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-            ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-            ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-            ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-            ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-            ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-            ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-            ['filleremail@wrong.com,', false, 'failure message'],]
+            ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+            ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+            ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+            ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+            ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+            ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+            ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+            ['filleremail@wrong.com,', 'false', 'failure message'],]
             }
           ]
         },
@@ -58,33 +58,33 @@ class Dashboard extends Component {
           jobs: [
             {
               jobName: 'job 1',
-              time: '3:35 wednesday',
+              time: '6/12/2020, 3:22:28 PM',
               verifiedTotal: 25,
               verifiedValid: 21,
               jobResults: [['filleremail@something.com',true, 'email valid'],
-              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-              ['filleremail@wrong.com,', false, 'failure message'],]
+              ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', 'false', 'failure message'],]
             },
             {
               jobName: 'job 2',
-              time: '12:35 sunday',
+              time: '6/12/2020, 4:22:28 PM',
               verifiedTotal: 125,
               verifiedValid: 89,
               jobResults: [['filleremail@something.com',true, 'email valid'],
-              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-              ['filleremail@wrong.com,', false, 'failure message'],['filleremail@something.com',true, 'email valid'],
-              ['filleremail@wrong.com,', false, 'failure message'],]
+              ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', 'false', 'failure message'],['filleremail@something.com',true, 'email valid'],
+              ['filleremail@wrong.com,', 'false', 'failure message'],]
             }
           ]
         }
@@ -98,7 +98,7 @@ class Dashboard extends Component {
     let temp = this.state.collections;
     let newJob = {
       jobName: name,
-      time: Date(),
+      time: new Date().toLocaleString(),
       verifiedTotal: data.length,
       verifiedValid:
         data.reduce((a, c) => {
@@ -143,8 +143,8 @@ class Dashboard extends Component {
     return (
       <>
         <section className="hero is-medium is-primary">
-          <div className="hero-body">
           <NavBar user={this.props.user} signOut={this.props.signOut}/>
+          <div className="hero-body">
             <div className="container">
               <h1 className="title">
                 SendMatic

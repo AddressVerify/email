@@ -5,7 +5,6 @@ import withFirebaseAuth from 'react-with-firebase-auth'
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import firebaseConfig from './firebaseConfig';
-import logo from './Logo.png'
 import Dashboard from './Dashboard';
 import SignUp from './SignUp';
 
@@ -18,6 +17,7 @@ const providers = {
 };
 
 class App extends React.Component {
+  
   render() {
     const {
       user,
@@ -28,9 +28,9 @@ class App extends React.Component {
       <>
         {
           this.props.user
-            ? <Dashboard user={this.props.user} signOut={this.props.signOut}/>
+            ? <Dashboard user={user} signOut={signOut}/>
             :
-              <SignUp signInWithGoogle={this.props.signInWithGoogle}/>
+              <SignUp signInWithGoogle={signInWithGoogle}/>
         }
       </>
     );

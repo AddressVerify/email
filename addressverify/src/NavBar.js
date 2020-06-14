@@ -9,29 +9,32 @@ export default function NavBar(props) {
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           
-          <a role="button" className={`navbar-burger burger ${isOpen ? 'is-active':''}`}
+          <button className={`anchor navbar-burger burger ${isOpen ? 'is-active':''}`}
             aria-label="menu"
             aria-expanded={isOpen} data-target="navbarBasicExample" onClick={toggleBurger}>
             <span aria-hidden={!isOpen}></span>
             <span aria-hidden={!isOpen}></span>
             <span aria-hidden={!isOpen}></span>
-          </a>
+          </button>
         </div>
 
         <div id="navbarBasicExample" className={`navbar-menu ${isOpen ? 'is-active':''}`}>
           <div className="navbar-start">
-            <a className="navbar-item" href="#">
-              <img src={Logo} className={"logo"} alt="SendMatic Logo">
+              <img src={Logo} className={"logo navbar-item"} alt="SendMatic Logo">
               </img>
-            </a>
           </div>
 
           <div className="navbar-end">
             <div className="navbar-item">
               <div className="buttons">
-                <button className="button is-light">
-                  <strong>Sign up</strong>
-                </button>
+                  {
+                    props.user
+                    ? ''
+                    : <button className="button is-light">
+                        <strong>Sign up</strong>
+                      </button>
+                  }
+
                 <button className="button is-light" onClick={props.signOut}>
                   {
                     props.user

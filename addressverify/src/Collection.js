@@ -1,10 +1,19 @@
 import React from 'react';
 import Job from './Job';
 import AddJob from './AddJob';
+import { CSVLink } from 'react-csv';
+
 
 export default function Collection(props) {
   const [isOpen, setIsOpen] = React.useState(false);
   const toggleDrawer = () => setIsOpen(!isOpen);
+  const handleDL = (e) => {
+    e.stopPropagation()
+  }
+  var totalResults = []; 
+  props.data.jobs.forEach((records) => {
+    totalResults = totalResults.concat(records.jobResults)
+  });
   return (
     <>
       <div className={'coll-display button is-primary wide level'} onClick={toggleDrawer}>
@@ -12,7 +21,16 @@ export default function Collection(props) {
           {props.data.name}
         </div>
         <div className={"level-right fix-margin"}>
-        Records : {props.data.collTotal}
+        {props.data.collTotal}
+        <br></br> 
+        Records 
+        </div>
+        <div className={"level-right fix-margin"} onClick={handleDL}>
+        <CSVLink
+          data={totalResults}
+          className={"button is-link is-small"}>
+          Download CSV
+				</CSVLink>
         </div>
       </div>
       {isOpen ?

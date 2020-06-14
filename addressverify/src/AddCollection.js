@@ -7,7 +7,7 @@ export default function AddCollection(props) {
   return (
     <>
       <div className={"collection"}>
-        <button className={"button is-primary wide"} onClick={toggleModal}>+ New Collection</button>
+        <button className={"button is-primary wide coll-display"} onClick={toggleModal}>+ New Collection</button>
       </div>
       {isOpen ?
         <CollectionModal new={props.new} closer={toggleModal} />
