@@ -2,6 +2,7 @@ import React from 'react';
 import CollectionModal from './CollectionModal';
 
 export default function AddCollection(props) {
+  //drawer mechanism using hooks
   const [isOpen, setIsOpen] = React.useState(false);
   const toggleModal = () => setIsOpen(!isOpen);
   return (

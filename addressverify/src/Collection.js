@@ -10,10 +10,6 @@ export default function Collection(props) {
   const handleDL = (e) => {
     e.stopPropagation()
   }
-  var totalResults = []; 
-  props.data.jobs.forEach((records) => {
-    totalResults = totalResults.concat(records.jobResults)
-  });
   return (
     <>
       <div className={'coll-display button is-primary wide level'} onClick={toggleDrawer}>
@@ -27,7 +23,7 @@ export default function Collection(props) {
         </div>
         <div className={"level-right fix-margin"} onClick={handleDL}>
         <CSVLink
-          data={totalResults}
+          data={props.data.collResults}
           className={"button is-link is-small"}>
           Download CSV
 				</CSVLink>

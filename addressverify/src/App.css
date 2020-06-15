@@ -39,7 +39,7 @@ span {
   padding:1% 5%;
   border:1px solid lightgray;
   border-radius: 5px;
-  height: 6em !important;
+  height: 5em !important;
 }
 
 .fix-margin {
@@ -62,6 +62,11 @@ input {
 .anchor{
   border:none !important;
   background-color: white !important;
+}
+
+.card-sizer {
+  width: 50%;
+  margin:50px auto;
 }
 
 @media screen and (max-width: 600px) {

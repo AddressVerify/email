@@ -3,6 +3,14 @@ import google from './google.png'
 
 export default function SignUp(props) {
   return (
+  <div className="card card-sizer">
+  <header className="card-header">
+    <p className="card-header-title">
+      Sign Up
+    </p>
+  </header>
+  <div className="card-content">
+    <div className="content">
     <div className="container fluid">
       <div className="field">
         <label className="label">Name</label>
@@ -22,9 +30,8 @@ export default function SignUp(props) {
             <i className="fas fa-check"></i>
           </span>
         </div>
-        <p className="help is-success">This username is available</p>
+        <p className="help is-success"></p>
       </div>
-
       <div className="field">
         <label className="label">Email</label>
         <div className="control has-icons-left has-icons-right">
@@ -36,9 +43,12 @@ export default function SignUp(props) {
             <i className="fas fa-exclamation-triangle"></i>
           </span>
         </div>
-        <p className="help is-danger">This email is invalid</p>
+        <p className="help is-danger"></p>
       </div>
-
+    </div>
+    </div>
+  </div>
+  <footer className="card-footer">
       <div className="field is-grouped">
         <div className="control">
           <button className="button">Submit</button>
@@ -52,6 +62,10 @@ export default function SignUp(props) {
         <img src={google} alt="Sign in with Google"></img>
       </button>
       </div>
-    </div>
+  </footer>
+</div>
+
+
+
   );
 }

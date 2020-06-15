@@ -16,7 +16,7 @@ class Dashboard extends Component {
           name: 'Important Company 1',
           collTotal: 150,
           collValid: 100,
-          collResults: 'www.appdownload.com',
+          collResults: [],
           jobs: [
             {
               jobName: 'job 1',
@@ -54,7 +54,7 @@ class Dashboard extends Component {
           name: 'Important Company 2',
           collTotal: 150,
           collValid: 100,
-          collResults: 'www.appdownload.com',
+          collResults: [],
           jobs: [
             {
               jobName: 'job 1',
@@ -102,13 +102,16 @@ class Dashboard extends Component {
       verifiedTotal: data.length,
       verifiedValid:
         data.reduce((a, c) => {
-          return a + c[1]
+          return a + (c[c.length-2] === 'false')
         }, 0),
       jobResults:data
     }
     temp[coll].collTotal += newJob.verifiedTotal;
     temp[coll].collValid += newJob.verifiedValid;
     temp[coll].jobs.push(newJob)
+    temp[coll].jobs.forEach((records) => {
+    temp[coll].collResults = temp[coll].collResults.concat(records.jobResults)
+    });
     this.setState({
       collections: temp
     })

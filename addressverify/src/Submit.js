@@ -45,7 +45,7 @@ class Submit extends React.Component {
 				this.setState({
 					verified: res.data,
 					emails: [],
-				}, this.props.newJob(res.data, coll, name))
+				})
 			})
 			.then(() => {
 				let tempCsv = this.state.csv
@@ -54,7 +54,7 @@ class Submit extends React.Component {
 				})
 				this.setState({
 					csv: tempCsv
-				})
+				}, this.props.newJob(this.state.csv, coll, name))
 			})
 			.catch((err) => { console.log(err) })
 			.finally(() => this.props.closer()
