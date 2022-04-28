@@ -28,9 +28,9 @@ class Submit extends React.Component {
 		var coll = this.props.index;
 		var name = this.state.jobName;
 		//production 
-		Axios.post('http://sendmatic.com/app/verify', {
+		// Axios.post('http://sendmatic.com/app/verify', {
 		//dev
-		// Axios.post('/verify', {
+		Axios.post('/verify', {
 			data: this.state.emails,
 			inactive: [1],
 			jobSet: null
@@ -78,6 +78,7 @@ class Submit extends React.Component {
 			submission: ''
 		})
 	}
+	
 	handleImport(e) {
 		let extracted = []
 		e.forEach((item) => {

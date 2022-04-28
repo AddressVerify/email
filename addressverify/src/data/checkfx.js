@@ -29,12 +29,7 @@ const verify = function (email, inactiveTests, jobSet) {
 
     return [false, 'Dedupe check failed'];
   }
-  // function domainMx(email){
-  //   if(await serverAcceptsEmail(email)){
-  //     return [true, 'Domain/MX check passed'];
-  //   }
-  //   return [false, 'Domain/MX check failed'];
-  // }
+
   // Rolebased/DEA
   const roleBasedDisposable = function (email) {
     for (let i = 0, j = data.deaList.length; i < j; i++) {
