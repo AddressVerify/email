@@ -6,7 +6,7 @@ export default function Footer(props) {
       <div className="content has-text-centered">
         <p>
           <strong>SendMatic 2020</strong><br></br> Site designed by Miles Sobhani <br></br>
-          created using React and Node.js
+          created using React
     </p>
       </div>
     </footer>

@@ -12,15 +12,19 @@ export default function Job(props) {
         {props.data.time}
       </div>
       <div className={"level-item job-display"}>
-        {props.data.verifiedValid} Passed
+        {props.data.verifiedValid}
+        <br></br>
+         Verified
         </div>
       <div className={"level-item job-display"}>
-        {props.data.verifiedTotal} Records
+        {props.data.verifiedTotal}
+         <br></br>
+         Records
         </div>
       <div className={"level-item job-display"}>
         <CSVLink
-          data={props.data.jobResults} className={"button is-link is-small"}>
-          Download CSV
+          data={props.data.jobResults} className={"button is-primary is-small"}>
+           <i class="fas fa-download"></i>
 				</CSVLink>
       </div>
     </>

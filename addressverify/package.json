@@ -4,6 +4,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.14.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
     "@reach/router": "^1.3.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -13,14 +17,12 @@
     "express": "^4.17.1",
     "firebase": "^7.14.6",
     "mysql": "^2.18.1",
-    "node-sass": "^4.14.1",
-    "proxy": "http://localhost:60000",
     "react": "^16.13.1",
     "react-csv": "^2.0.3",
     "react-csv-reader": "^3.0.5",
     "react-dom": "^16.13.1",
     "react-firebaseui": "^4.1.0",
-    "react-scripts": "3.4.1",
+    "react-scripts": "^3.4.1",
     "react-with-firebase-auth": "^1.3.2",
     "server-accepts-email": "^1.11.1"
   },
@@ -31,7 +33,6 @@
     "eject": "react-scripts eject",
     "server": "node server.js"
   },
-  "proxy": "http://localhost:60000",
   "eslintConfig": {
     "extends": "react-app"
   },

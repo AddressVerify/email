@@ -7,7 +7,7 @@ export default function AddJob(props) {
   return (
     <>
       <div className={"collection"}>
-        <button className={"button is-primary wide"} onClick={toggleModal}>+ New Job</button>
+        <button className={"button wide"} onClick={toggleModal}>+ New Job</button>
       </div>
       {isOpen ?
         <Submit index={props.index} newJob={props.newJob} num={props.jobNumber} closer={toggleModal}/>

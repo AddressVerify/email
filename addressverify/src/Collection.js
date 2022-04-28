@@ -10,22 +10,30 @@ export default function Collection(props) {
   const handleDL = (e) => {
     e.stopPropagation()
   }
+  const cleanArr = [];
+  const cleanResults = (props) => {
+    props.data.collTotal.forEach((result) => {
+      if(result[1] === true){
+        cleanArr.push(result);
+      }
+    })
+  }
   return (
     <>
-      <div className={'coll-display button is-primary wide level'} onClick={toggleDrawer}>
-        <div className={"level-left"}>
+      <div className={'coll-display button wide level'} onClick={toggleDrawer}>
+        <div className={"level-left size-min"}>
           {props.data.name}
         </div>
-        <div className={"level-right fix-margin"}>
+        <div className={"level-item fix-margin"}>
         {props.data.collTotal}
         <br></br> 
-        Records 
+        Records Processed
         </div>
-        <div className={"level-right fix-margin"} onClick={handleDL}>
+        <div className={"level-right fix-margin size-min"} onClick={handleDL}>
         <CSVLink
           data={props.data.collResults}
-          className={"button is-link is-small"}>
-          Download CSV
+          className={"button is-primary is-small"}>
+          <i class="fas fa-download"></i>
 				</CSVLink>
         </div>
       </div>

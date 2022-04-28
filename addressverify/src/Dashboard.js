@@ -130,6 +130,7 @@ class Dashboard extends Component {
         let newCollData =
         {
           name: res.data,
+          collResults: [],
           collTotal: 0,
           collValid: 0,
           jobs: []
@@ -145,7 +146,7 @@ class Dashboard extends Component {
   render() {
     return (
       <>
-        <section className="hero is-medium is-primary">
+        <section className="hero is-primary">
           <NavBar user={this.props.user} signOut={this.props.signOut}/>
           <div className="hero-body">
             <div className="container">

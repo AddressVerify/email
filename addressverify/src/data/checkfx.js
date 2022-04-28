@@ -110,4 +110,4 @@ module.exports = {
   verify:verify
 }
 
-// console.log(serverAcceptsEmail('linus@folkdatorn.se').then((response) => response).catch((reject) => reject));
+//console.log(await serverAcceptsEmail('linus@folkdatorn.se'));
